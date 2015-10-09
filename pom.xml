@@ -3,19 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.netstal.roberto.osgi.parent</groupId>
 	<artifactId>MavenParent</artifactId>
-	<version>1.0.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<name>Tycho Timer Demo</name>
 	<description>Test project for building osgi projects with maven-tycho</description>
-	
+
 	<scm>
-		
-	
-	
-	
+		<connection>scm:git:git@github.com:robertocuervo/mavenParent.git</connection>
+		<url>https://github.com/robertocuervo/mavenParent</url>
 	</scm>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- 0.22.0 : Target location type: Directory is not supported -->
@@ -35,6 +33,17 @@
 			<id>mars</id>
 			<url>${mars-repo.url}</url>
 			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>tychoMaven-project</id>
+			<url>http://localhost:8081/nexus/content/repositories/tychoTimer/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 
@@ -71,7 +80,7 @@
 					</dependency-resolution>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
@@ -88,4 +97,16 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>tychoMaven-project-snapshots</id>
+			<url>http://localhost:8081/nexus/content/repositories/tychoTimer-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>tychoMaven-project-releases</id>
+			<url>http://localhost:8081/nexus/content/repositories/tychoTimer/</url>
+		</repository>
+	</distributionManagement>
+	
 </project>
